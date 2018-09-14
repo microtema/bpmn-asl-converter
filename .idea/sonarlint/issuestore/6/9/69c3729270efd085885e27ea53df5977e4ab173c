@@ -1,0 +1,4 @@
+
+psquid:UselessImportCheck"ERemove this unused import 'org.camunda.bpm.model.bpmn.instance.Task'.(ΝÿςΊ8ΞΫÿΪ,
+tsquid:S1068"QRemove this unused "statePatternData2TaskStateDefinitionConverter" private field.(λ®ψÿÿÿÿ8σδώΪ,
+usquid:UselessImportCheck"KRemove this unused import 'org.camunda.bpm.model.bpmn.instance.StartEvent'.(ΆΞf8ΡήÿΪ,

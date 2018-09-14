@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0e0h9cz" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
+  <bpmn:process id="Process_1" name="Step Functions" isExecutable="false" camunda:versionTag="1.0" camunda:modelerTemplate="BpmProcess">
+    <bpmn:documentation>Some Description</bpmn:documentation>
+    <bpmn:extensionElements>
+      <camunda:properties>
+        <camunda:property name="TIMEOUT" value="20" />
+      </camunda:properties>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_02745pl</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_02745pl" sourceRef="StartEvent_1" targetRef="Task_1vsgywb" />
+    <bpmn:endEvent id="EndEvent_1qccnh4">
+      <bpmn:incoming>SequenceFlow_1scpktp</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0lhemqh" sourceRef="Task_1vsgywb" targetRef="Task_0gq4et6" />
+    <bpmn:serviceTask id="Task_1vsgywb" name="Foo" camunda:delegateExpression="arn:aws:lambda:us-east-1:123456789012:function:Foo" camunda:modelerTemplate="ServiceTask">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property name="RESULT_PATH" value="$" />
+        </camunda:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_02745pl</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0lhemqh</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1scpktp" sourceRef="Task_0gq4et6" targetRef="EndEvent_1qccnh4" />
+    <bpmn:serviceTask id="Task_0gq4et6" name="Bar" camunda:delegateExpression="arn:aws:lambda:us-east-1:123456789012:function:Bar" camunda:modelerTemplate="ServiceTask">
+      <bpmn:incoming>SequenceFlow_0lhemqh</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1scpktp</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="89" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_02745pl_di" bpmnElement="SequenceFlow_02745pl">
+        <di:waypoint x="191" y="125" />
+        <di:waypoint x="191" y="158" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1qccnh4_di" bpmnElement="EndEvent_1qccnh4">
+        <dc:Bounds x="173" y="420" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0lhemqh_di" bpmnElement="SequenceFlow_0lhemqh">
+        <di:waypoint x="191" y="238" />
+        <di:waypoint x="191" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1wnfdss_di" bpmnElement="Task_1vsgywb">
+        <dc:Bounds x="141" y="158" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1scpktp_di" bpmnElement="SequenceFlow_1scpktp">
+        <di:waypoint x="191" y="375" />
+        <di:waypoint x="191" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_1s0ii81_di" bpmnElement="Task_0gq4et6">
+        <dc:Bounds x="141" y="295" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
