@@ -40,7 +40,7 @@
 
         <lomok.version>1.16.16</lomok.version>
 
-        <model.builder.version>2.0.0-SNAPSHOT</model.builder.version>
+        <model.builder.version>2.0.0</model.builder.version>
 
         <powermock.api.easymock.version>1.6.5</powermock.api.easymock.version>
         <powermock.version>1.6.6</powermock.version>
@@ -183,7 +183,7 @@
         </dependency>
 
         <dependency>
-            <groupId>de.seven.fate</groupId>
+            <groupId>de.7fate</groupId>
             <artifactId>model-builder</artifactId>
             <version>${model.builder.version}</version>
             <scope>test</scope>
