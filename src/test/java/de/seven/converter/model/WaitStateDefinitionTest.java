@@ -1,5 +1,6 @@
 package de.seven.converter.model;
 
+import com.fasterxml.jackson.databind.util.ISO8601Utils;
 import de.seven.converter.enums.StateType;
 import de.seven.converter.json.Object2JsonConverter;
 import de.seven.fate.model.builder.annotation.Inject;
@@ -7,6 +8,8 @@ import de.seven.fate.model.builder.util.FieldInjectionUtil;
 import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
@@ -49,11 +52,11 @@ public class WaitStateDefinitionTest {
     public void waitUntil() throws Exception {
 
         sut.setNext("NextState");
-        sut.setTimestamp(DateUtils.parseDate("2016-03-14T01:59:00Z", "YYYY-MM-DD'T'hh:mm:ss'Z'"));
+        sut.setTimestamp(new Date());
 
         String expected = "{\n" +
                 "  \"Type\" : \"Wait\",\n" +
-                "  \"Timestamp\" : \"2016-01-04T00:59:00Z\",\n" +
+                "  \"Timestamp\" : \"" + (ISO8601Utils.format(sut.getTimestamp())) + "\",\n" +
                 "  \"Next\" : \"NextState\"\n" +
                 "}";
 
